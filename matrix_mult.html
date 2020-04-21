@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Matrix Multiplication</title>
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Electrolize|Orbitron|Teko&display=swap"
+           rel="stylesheet">
+
+</head>
+
+<style>
+    input[type="button"] {
+        font-family: 'Teko', sans-serif;
+        padding: 15px 15px 15px 15px;
+        font-size: 40px;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: ghostwhite;
+        border: 2px solid lightskyblue;
+        border-radius: 15px;
+        margin: 5px;
+        background-color: steelblue;
+        cursor: default;
+        opacity: 0.8;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+    }
+
+    input[type="button"]:active {
+        background-color: lightskyblue;
+        opacity: 1;
+    }
+
+    input[type="button"]:hover {
+        opacity: 1;
+    }
+
+    p {
+        font-family: 'Electrolize', sans-serif;
+        font-size: 16px;
+        color:steelblue;
+    }
+
+    form {
+        font-family: 'Electrolize', sans-serif;
+        font-size: 20px;
+        color:steelblue;
+    }
+
+    .slider {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 90%;
+        height: 10px;
+        border-radius: 5px;
+        outline: none;
+        background: steelblue;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+    }
+
+    .slider:hover {
+        opacity: 1;
+    }
+
+    .slider:active {
+        opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+        border: 2px solid steelblue;
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: lightskyblue;
+        cursor: move;
+    }
+
+    .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        background: lightskyblue;
+        cursor: pointer;
+    }
+
+    #sliderParagraph {
+        color: deepskyblue;
+    }
+
+    html {
+        min-height: 100%;
+        background: radial-gradient(circle, #284594, #00071c) no-repeat;
+    }
+
+    #description {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 30px;
+        color: deepskyblue;
+        opacity: 0.8;
+        margin: 3px;
+    }
+
+    #SizeM {
+        width: 99.5%;
+    }
+
+    #SizeP {
+        width: 97.5%;
+    }
+
+    #TransitionTime {
+        width: 98%;
+    }
+
+    .container {
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    .controls {
+        transform: translate(656px, -410px);
+        width: 50%;
+    }
+
+    .graph {
+        transform: translate(45px);
+        width: 50%
+    }
+
+</style>
+
+<body>
+    <div class="container">
+        <label id ="description">Matrix Multiplication, Memory Access, and Matrix Multiplication Algorithms</label>
+    </div>
+
+    <div class="container" id="svg_chart"></div>
+
+    <div class="graph_controls">
+        <section class="graph"></section>
+        <section class="controls">
+            <p id="SizeM">M Rows:<input min=4 max=16 value=9 type="range" class="slider" id="M"></p>
+            <p id="SizeN">N Rows:<input min=4 max=16 value=9 type="range" class="slider" id="N"></p>
+            <p id="SizeP">P Columns:<input min=4 max=16 value=9 type="range" class="slider" id="P"></p>
+            <p id="TransitionTime">Transition:<input min=150 max=300 value=150 type="range" class="slider" id="transition"></p>
+            <p id="ButtonParagraph">
+                <input type="button" onclick="button_step()" value="Step" id="Step">
+                <input type="button" onclick="play()" value="Play" id="Play">
+                <input type="button" onclick="sliderStopPlay()" value="Stop/Clear" id="Stop">
+            </p>
+            <form onclick="radioFunction()">
+                <input type="radio" id="naive" name="algorithm" value="naive" checked>Naive Algorithm<br>
+                <input type="radio" id="trans" name="algorithm" value="transpose">Transpose Algorithm<br>
+                <!-- <input type="radio" id="tile" name="algorithm" value="tile">Tile Algorithm<br> -->
+            </form>
+        </section>
+    </div>
+
+
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
